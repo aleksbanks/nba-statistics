@@ -94,7 +94,6 @@ router.put('/teams/stat/change', async (req, res) => {
 
   let { id, season } = req.body;
   season = Number(season.substring(0, 5))
-  console.log(season);
 
   const teamLeadersApi = await fetch(`http://data.nba.net/prod/v1/${season}/teams/${id}/leaders.json`)
   const players = await fetch(`http://data.nba.net/prod/v1/${season}/players.json`)
@@ -159,7 +158,6 @@ router.get('/teams/stat/:id', async (req, res) => {
   teams = teams.league.standard;
   let team = teams.filter((team) => team.teamId === id)
   team = team[0]
-  console.log(leaders);
   res.render('teamsStat', { team, teamPlayers, leaders, seasons })
 });
 

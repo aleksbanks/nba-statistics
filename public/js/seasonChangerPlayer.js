@@ -4,7 +4,6 @@ document.addEventListener('submit', async (e) => {
     const { seasonFormPlayer } = document.forms;
     const season = seasonFormPlayer.playerSeason.value
     const id = seasonFormPlayer.playerSeason.dataset.id
-    console.log(id);
     const resultPage = await fetch('/player/stat/edit', {
       method: 'PUT',
       headers: {
