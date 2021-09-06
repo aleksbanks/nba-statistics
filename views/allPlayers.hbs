@@ -1,0 +1,18 @@
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-center align-items-center">
+    <h2>Игроки:</h2>
+  </li>
+  <ul class="list-group-my">
+  {{#each players}}
+  <li class="list-group-item d-flex justify-content-center align-items-center">
+    <a href="player/stat/{{this.personId}}">{{this.firstName}} {{this.lastName}}</a>
+  </li>
+  {{/each}}</ul>
+  <li class="list-group-item d-flex justify-content-around align-items-center">Если вашего любимого игрока нет,
+    воспользуйтесь поиском:      
+          <form class="d-flex">
+            <input class="form-control me-sm-2" type="text" placeholder="ex: LEBRON" style="background-color:rgba(151, 150, 150, 0.747);">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Поиск</button>
+          </form></li>
+
+</ul>

@@ -1,0 +1,129 @@
+<br>
+<div class="d-flex flex-direction-column justify-content-center align-items-center">
+  <div class="card border-primary mb-3" style="max-width: 20rem;">
+    <div class="card-header">
+      <h3>{{team.fullName}}</h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> Город: {{team.city}}</li>
+        <li class="list-group-item"> Конференция: {{team.confName}}</li>
+        <li class="list-group-item"> Дивизион: {{team.divName}}</li>
+      </ul>
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="form-group">
+  <form name="seasonForm" class="seasonChange">
+    <label for="exampleSelect1" class="form-label mt-4">Выберете сезон:</label>
+    <select name="teamSeason" class="form-select" data-class="seasonsTeam" data-id="{{team.teamId}}">
+      {{#each seasons}}
+      <option>{{this}}</option>
+      {{/each}}
+    </select>
+    <button class="btn btn-primary btn-sm seasonChange" data-id="seasonButton">Поменять</button>
+  </form>
+</div>
+<div class="d-flex flex-direction-column justify-content-center align-items-center">
+  <h2>Лидеры:</h2>
+</div>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Лидер по очкам за матч:</th>
+      <th scope="col">Очки за матч:</th>
+      <th scope="col">Лидер по ассистам за матч:</th>
+      <th scope="col">Ассисты за матч:</th>
+      <th scope="col">Лидер по подборам за матч:</th>
+      <th scope="col">Подборы за матч:</th>
+      <th scope="col">Лучший проценты с игры:</th>
+      <th scope="col">Процент с игры:</th>
+      <th scope="col">Лучший проценты трехочковых:</th>
+      <th scope="col">Процент с трехочковых:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
+      <td><a href="/player/stat/{{leaders.ppg.personId}}">{{leaders.ppg.name}}</a></td>
+      <td>{{leaders.ppg.value}}</td>
+      <td><a href="/player/stat/{{leaders.apg.personId}}">{{leaders.apg.name}}</a></td>
+      <td>{{leaders.apg.value}}</td>
+      <td><a href="/player/stat/{{leaders.trpg.personId}}">{{leaders.trpg.name}}</a></td>
+      <td>{{leaders.trpg.value}}</td>
+      <td><a href="/player/stat/{{leaders.fpg.personId}}">{{leaders.fgp.name}}</a></td>
+      <td>{{leaders.fgp.value}}</td>
+      <td><a href="/player/stat/{{leaders.tpp.personId}}">{{leaders.tpp.name}}</a></td>
+      <td>{{leaders.tpp.value}}</td>
+
+    </tr>
+  </tbody>
+</table>
+<br><br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Лидер по блокам за матч:</th>
+      <th scope="col">Блоки за матч:</th>
+      <th scope="col">Лидер по перехватам за матч:</th>
+      <th scope="col">Перехваты за матч:</th>
+      <th scope="col">Лидер по потерям за матч:</th>
+      <th scope="col">Потери за матч:</th>
+      <th scope="col">Лидер по фолам за матч:</th>
+      <th scope="col">Фолы за матч:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
+      <td><a href="/player/stat/{{leaders.bpg.personId}}">{{leaders.bpg.name}}</a></td>
+      <td>{{leaders.bpg.value}}</td>
+      <td><a href="/player/stat/{{leaders.spg.personId}}">{{leaders.spg.name}}</a></td>
+      <td>{{leaders.spg.value}}</td>
+      <td><a href="/player/stat/{{leaders.tpg.personId}}">{{leaders.tpg.name}}</a></td>
+      <td>{{leaders.tpg.value}}</td>
+      <td><a href="/player/stat/{{leaders.pfpg.personId}}">{{leaders.pfpg.name}}</a></td>
+      <td>{{leaders.pfpg.value}}</td>
+
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex flex-direction-column justify-content-center align-items-center">
+  <h2>Состав:</h2>
+</div>
+<br>
+
+<div class="d-flex flex-direction-column justify-content-center align-items-center"></div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Игрок:</th>
+      <th scope="col">Номер:</th>
+      <th scope="col">Позиция:</th>
+      <th scope="col">Рост:</th>
+      <th scope="col">Вес:</th>
+      <th scope="col">Дата рождения:</th>
+      <th scope="col">Страна:</th>
+      <th scope="col">В NBA с:</th>
+    </tr>
+  </thead>
+  <tbody>{{#each teamPlayers}}
+    <tr class="table-active">
+
+      <td> <a href="/player/stat/{{this.personId}}"> {{this.firstName}} {{this.lastName}}</a></td>
+      <td>{{this.jersey}}</td>
+      <td>{{this.pos}}</td>
+      <td>{{this.heightMeters}} метров</td>
+      <td>{{this.weightKilograms}} кг</td>
+      <td>{{this.dateOfBirthUTC}}</td>
+      <td>{{this.country}}</td>
+      <td>{{this.nbaDebutYear}}</td>
+      {{/each}}
+    </tr>
+  </tbody>
+</table>
+
+<script defer src="/js/seasonChangerTeam.js"></script>

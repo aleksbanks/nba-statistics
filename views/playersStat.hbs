@@ -1,0 +1,100 @@
+<br>
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="card border-primary mb-3" style="max-width: 20rem;">
+    <div class="card-header">
+      <h3>{{player.firstName}} {{player.lastName}}</h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> Рост: {{player.heightMeters}} метров</li>
+        <li class="list-group-item"> Вес: {{player.weightKilograms}} кг</li>
+        <li class="list-group-item"> Позиция: {{player.pos}}</li>
+        <li class="list-group-item"> Дата Рождения: {{player.dateOfBirthUTC}}</li>
+        <li class="list-group-item"> Страна: {{player.country}}</li>
+        <li class="list-group-item"> Старт в НБА: {{player.nbaDebutYear}}</li>
+      </ul>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <form name="seasonFormPlayer" class="seasonChange">
+    <label for="exampleSelect1" class="form-label mt-4">Выберете сезон:</label>
+    <select name="playerSeason" class="form-select" data-class="seasonsPlayer" data-id="{{player.personId}}">
+      {{#each seasons}}
+      <option>{{this}}</option>
+      {{/each}}
+    </select>
+    <button class="btn btn-primary btn-sm seasonChange" data-id="seasonButton">Поменять</button>
+  </form>
+</div>
+
+<table class="table table-hover" style="margin: 2px;">
+  <thead>
+    <tr>
+      <th scope="col">Сезон:</th>
+      <th scope="col"></th>
+      <th scope="col">Очки:</th>
+      <th scope="col">Подборы:</th>
+      <th scope="col">Передачи:</th>
+      <th scope="col">Минуты <br> на площадке:</th>
+      <th scope="col">Потери:</th>
+      <th scope="col">Перехваты:</th>
+      <th scope="col">Блоки:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
+      <th scope="row">{{playerStatSeason.seasonYear}}
+      <td>Среднее:</td>
+      <td>{{playerStatSeason.ppg}}</td>
+      <td>{{playerStatSeason.rpg}}</td>
+      <td>{{playerStatSeason.apg}}</td>
+      <td>{{playerStatSeason.mpg}}</td>
+      <td>{{playerStatSeason.topg}}</td>
+      <td>{{playerStatSeason.spg}}</td>
+      <td>{{playerStatSeason.bpg}}</td>
+      </th>
+    </tr>
+    <tr class="table-active">
+      <th scope="row">
+      <td>Всего</td>
+      <td>{{playerStatSeason.points}}</td>
+      <td>{{playerStatSeason.totReb}}</td>
+      <td>{{playerStatSeason.assists}}</td>
+      <td>{{playerStatSeason.min}}</td>
+      <td>{{playerStatSeason.turnovers}}</td>
+      <td>{{playerStatSeason.steals}}</td>
+      <td>{{playerStatSeason.blocks}}</td>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+
+<div class="d-flex justify-content-around">
+  <div class="card text-white bg-secondary mb-3 d-flex " style="max-width: 450px">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Проценты с игры:</th>
+          <th scope="col">Проценты трехочковых с игры:</th>
+          <th scope="col">Процент штрафных:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-dark">
+          <td>{{playerStatSeason.tpp}}</td>
+          <td>{{playerStatSeason.ftp}}</td>
+          <td>{{playerStatSeason.fgp}}</td>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script defer src="/js/seasonChangerPlayer.js"></script>

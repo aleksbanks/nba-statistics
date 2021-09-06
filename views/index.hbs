@@ -1,0 +1,89 @@
+<br>
+
+  <div class="d-flex justify-content-center">
+      <div class="container1">
+        <div class="text1">
+          <span style="--i:1">N</span>
+          <span style="--i:2">B</span>
+          <span style="--i:3">A</span>
+          <span style="--i:4">-</span>
+          <span style="--i:5">S</span>
+          <span style="--i:6">T</span>
+          <span style="--i:7">A</span>
+          <span style="--i:8">T</span>
+        </div>
+      </div>
+  </div><br><div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-around">
+
+    <div class="card text-white bg-primary mb-3 d-flex justify-conyent-center " style="max-width: 750px">
+      <table class="table table-hover" style="max-width: 700px; ">
+        <thead>
+          <h5 class="text-white" style="margin-left: 10px; margin-top: 10px">Положения команд:</h5>
+          <h6 class="text-white" style="margin-left: 10px; margin-top: 10px">Сезон: {{thisYear}}</h6>
+          <tr>
+            <th scope="col">Команда:</th>
+            <th scope="col">Победы;</th>
+            <th scope="col">Процент побед:</th>
+            <th scope="col">Поражения:</th>
+            <th scope="col">Процент поражений:</th>
+            <th scope="col">Место в конференции:</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each standings}}
+          <tr>
+            <td><a href="/teams/stat/{{this.teamId}}" class="text-muted">{{this.teamSitesOnly.teamTricode}}</a></td>
+            <td>{{this.win}}</td>
+            <td>{{this.winPctV2}}</td>
+            <td>{{this.loss}}</td>
+            <td>{{this.lossPctV2}}</td>
+            <td>{{this.confRank}}</td>
+            <td>{{this.spg}}</td>
+            <td>{{this.bpg}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+    </div>
+  </div><br>
+
+  <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-between" style="max-width: 800px">
+      <div class="card text-white bg-primary mb-3 d-flex " style="max-width: 40rem; max-height: 380px">
+        <div class="card-body">
+          <form name="teamForm">
+            <h2 class="text-white">Поиск по командам</h2>
+            <div class="form-group">
+              <label for="team" class="form-label mt-4">Команда:</label>
+              <select name="teamSelect" class="form-select" id="teams">
+                {{#each teams}}
+                <option value="{{this.teamId}}">{{this.fullName}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleSelect1" class="form-label mt-4">Выберете сезон:</label>
+              <select name="teamSeason" class="form-select" id="seasonsTeam">
+                {{#each seasons}}
+                <option>{{this}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-dark swashIn">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+
+
+  <script defer src="/js/forms.js"></script>
+</div>

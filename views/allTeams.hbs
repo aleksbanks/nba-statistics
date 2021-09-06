@@ -1,0 +1,11 @@
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-around align-items-center">
+    <h2>Все команды:</h2>
+  </li>
+  {{#each teams}}
+    <li class="list-group-item d-flex justify-content-center align-items-center">
+      <a href="teams/stat/{{this.teamId}}">{{this.fullName}}</a>
+    </li>
+  {{/each}}
+</ul>
+<script defer src="/js/teams.js"></script>
